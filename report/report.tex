@@ -1,445 +1,60 @@
 \documentclass[a4paper,14pt]{article}
 
-%\includeonly{topics/t2,topics/t3} % компилировать только указанные главы
-%%% Работа с русским языком
-\usepackage{cmap}					% поиск в PDF
-\usepackage{mathtext} 				% русские буквы в формулах
-\usepackage[T2A]{fontenc}			% кодировка
-\usepackage[utf8]{inputenc}			% кодировка исходного текста
-\usepackage[english,russian]{babel}	% локализация и переносы
-
-\usepackage{polyglossia}
-\setmainlanguage{russian} 
-\setotherlanguage{english}
-
-% XeLaTeX can use any font installed in your system fonts folder
-% Linux Libertine in the next line can be replaced with any 
-% OpenType or TrueType font that supports the Cyrillic script.
-
-\newfontfamily\russianfont[Script=Cyrillic]{Linux Libertine}
-
+\usepackage{cmap}         % поиск в PDF
+\usepackage{mathtext}         % русские буквы в формулах
+\usepackage[T2A]{fontenc}     % кодировка
+\usepackage[utf8]{inputenc}     % кодировка исходного текста
+\usepackage[russian]{babel} % локализация и переносы
+\usepackage{hyphenat}
 \frenchspacing
-%\usepackage{fontspec} 
-%\setmainfont[Ligatures={TeX,Historic}]{Times New Roman}
-
-%%%\usepackage{fancyhdr} % {\tiny  }Колонтитулы 
-%\pagestyle{fancy} 
-%\renewcommand{\headrulewidth}{0mm} % Толщина линейки, отчеркивающей верхний колонтитул 
-%\lfoot{Нижний левый} 
-%\rfoot{Нижний правый} 
-%\rhead{Верхний правый} 
-%\chead{Верхний в центре} 
-%\lhead{Верхний левый} 
-% \cfoot{Нижний в центре} % По умолчанию здесь номер страницы 
-
-%%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{mathrsfs}
+\usepackage{bbm}
 \usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
-%\usepackage{ dsfont } % more math fonts!
-%\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
-%\renewcommand{\phi}{\ensuremath{\varphi}}
-%\renewcommand{\kappa}{\ensuremath{\varkappa}}
-%\renewcommand{\le}{\ensuremath{\leqslant}}
 \renewcommand{\leq}{\ensuremath{\leqslant}}
-%\renewcommand{\ge}{\ensuremath{\geqslant}}
 \renewcommand{\geq}{\ensuremath{\geqslant}}
-%\renewcommand{\emptyset}{\varnothing}
 
-%% Номера формул
-%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
-%\usepackage{leqno} % Нумереация формул слева
-
-%%% Работа с картинками
 \usepackage{graphicx}  % Для вставки рисунков
-\graphicspath{crimeimages/}  % папки с картинками
 \setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
 \setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
-%\usepackage{wrapfig} % Обтекание рисунков текстом
-
 \usepackage{indentfirst}
-
-
-
-
-
-
-%%% Работа с таблицами
 \usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
 \usepackage{longtable}  % Длинные таблицы
 \usepackage{multirow} % Слияние строк в таблице
-
-%% Свои команды
-\DeclareMathOperator{\sgn}{\mathop{sgn}}
-
-%% Перенос знаков в формулах (по Львовскому)
-\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
-	{\hbox{$\mathsurround=0pt #1$}}{}}
-
-%%% Страница
 \usepackage{extsizes} % Возможность сделать 14-й шрифт
 \usepackage{geometry} % Простой способ задавать поля
-\geometry{top=20mm}
-\geometry{bottom=20mm}
-\geometry{left=35mm}
-\geometry{right=15mm}
-
-
 \usepackage{setspace} % Интерлиньяж
 \onehalfspacing % Интерлиньяж 1.5
-%\doublespacing % Интерлиньяж 2
-%\singlespacing % Интерлиньяж 1
-
 \usepackage{lastpage} % Узнать, сколько всего страниц в документе.
-%\usepackage{soul} % Модификаторы начертания
-
 \usepackage{hyperref}
 \usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
-\hypersetup{				% Гиперссылки
-	unicode=true,           % русские буквы в раздела PDF
-	%	pdftitle={Заголовок},   % Заголовок
-	%	pdfauthor={Автор},      % Автор
-	%	pdfsubject={Тема},      % Тема
-	%	pdfcreator={Создатель}, % Создатель
-	%	pdfproducer={Производитель}, % Производитель
-	%	pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
-	colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
-	linkcolor=blue,          % внутренние ссылки
-	citecolor=blue,        % на библиографию
-	filecolor=magenta,      % на файлы
-	urlcolor=ForestGreen           % на URL
-}
-
-
-% \usepackage{csquotes} % Еще инструменты для ссылок
-%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+\usepackage{tabularx}
 \usepackage{multicol} % Несколько колонок
 \usepackage{listings}
-%%% Программирование
 \usepackage{etoolbox} % логические операторы
-%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
-
 \usepackage{tikz} % Работа с графикой
-% \usepackage{pgfplots}
-% \usepackage{pgfplotstable}
-
-% % % Для работы с report
-%\renewcommand{\chaptername}{Глава}
-
-
 \usepackage{cite} % Работа с библиографией
-%\usepackage[superscript]{cite} % Ссылки в верхних индексах
-%\usepackage[nocompress]{cite} % 
-%\usepackage{csquotes} % Еще инструменты для ссылок
-
-% \usepackage{natbib} %библиография плюс https://ru.wikibooks.org/wiki/LaTeX/%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%B5%D0%B9
-%\bibliographystyle{rmpaps} 
-
-
-%%%% Работа со списками
-%\usepackage{enumitem} %%% дополнительная работа со списками. !а может и неправильно написано — гугли
-\usepackage{paralist}										% compact lists
-
-\renewcommand{\citeleft}{(}
-\renewcommand{\citeright}{)}
-
+\usepackage{paralist}                   % compact lists
 \usepackage{adjustbox} 
 \addto\captionsrussian{% Replace "english" with the language you use
-	\renewcommand{\contentsname}%
-	{Оглавление}%
+  \renewcommand{\contentsname}%
+  {Оглавление}%
 }
+\usepackage{float}
+\usepackage{polyglossia}
+\setmainlanguage{russian} 
+\setotherlanguage{english}
+\newfontfamily\russianfont[Script=Cyrillic]{Linux Libertine}
+\sloppy 
+  
+\usepackage{geometry} % Простой способ задавать поля
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 
-
-   % We will generate all images so they have a width \maxwidth. This means
-    % that they will get their normal width if they fit onto the page, but
-    % are scaled down if they would overflow the margins.
-    \makeatletter
-    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
-    \else\Gin@nat@width\fi}
-    \makeatother
-    \let\Oldincludegraphics\includegraphics
-    % Set max figure width to be 80% of text width, for now hardcoded.
-    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
-    % Ensure that by default, figures have no caption (until we provide a
-    % proper Figure object with a Caption API and a way to capture that
-    % in the conversion process - todo).
-    \usepackage{caption}
-    \DeclareCaptionLabelFormat{nolabel}{}
-    \captionsetup{labelformat=nolabel}
-
-    \usepackage{adjustbox} % Used to constrain images to a maximum size 
-    \usepackage{xcolor} % Allow colors to be defined
-    \usepackage{enumerate} % Needed for markdown enumerations to work
-    \usepackage{geometry} % Used to adjust the document margins
-    \usepackage{amsmath} % Equations
-    \usepackage{amssymb} % Equations
-    \usepackage{textcomp} % defines textquotesingle
-    % Hack from http://tex.stackexchange.com/a/47451/13684:
-    \AtBeginDocument{%
-        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
-    }
-  %  \usepackage{upquote} % Upright quotes for verbatim code
-%    \usepackage{eurosym} % defines \euro
-%    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
-%    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
-    \usepackage{fancyvrb} % verbatim replacement that allows latex
-    \usepackage{grffile} % extends the file name processing of package graphics 
-                         % to support a larger range 
-    % The hyperref package gives us a pdf with properly built
-    % internal navigation ('pdf bookmarks' for the table of contents,
-    % internal cross-reference links, web links for URLs, etc.)
-    \usepackage{hyperref}
-   \usepackage{longtable} % longtable support required by pandoc >1.10
-   \usepackage{booktabs}  % table support for pandoc > 1.12.2
-    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
-    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
-                                % normalem makes italics be italics, not underlines
-    
-
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{listinggray}{gray}{0.5}
-\definecolor{lbcolor}{rgb}{1,1,1}
-
-\setmonofont{Ubuntu Mono}
-\renewcommand*\lstlistingname{Listing}
-
-\lstset{
-  % backgroundcolor=\color{lbcolor},
-  tabsize=4,
-  rulecolor=,
-  language=Python,
-  literate={<-}{\texttt{<-}}{1},
-  basicstyle=\scriptsize\ttfamily,
-  upquote=true,
-  aboveskip={1\baselineskip},
-  columns=fixed,
-  showstringspaces=false,
-  extendedchars=true,
-  breaklines=true,
-  mathescape=false,
-  prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-  frame=tb,
-  showtabs=false,
-  showspaces=false,
-  showstringspaces=false,
-  keywordstyle=\color[rgb]{0, 0, 1},
-  commentstyle=\color[rgb]{0.133, 0.545, 0.133},
-  stringstyle=\color[rgb]{0.627, 0.126, 0.941},
-  alsoletter={.}
-}
-
-
-
-
-    
-    
-    % Colors for the hyperref package
-    \definecolor{urlcolor}{rgb}{0,.145,.698}
-    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
-    \definecolor{citecolor}{rgb}{.12,.54,.11}
-
-    % ANSI colors
-    \definecolor{ansi-black}{HTML}{3E424D}
-    \definecolor{ansi-black-intense}{HTML}{282C36}
-    \definecolor{ansi-red}{HTML}{E75C58}
-    \definecolor{ansi-red-intense}{HTML}{B22B31}
-    \definecolor{ansi-green}{HTML}{00A250}
-    \definecolor{ansi-green-intense}{HTML}{007427}
-    \definecolor{ansi-yellow}{HTML}{DDB62B}
-    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
-    \definecolor{ansi-blue}{HTML}{208FFB}
-    \definecolor{ansi-blue-intense}{HTML}{0065CA}
-    \definecolor{ansi-magenta}{HTML}{D160C4}
-    \definecolor{ansi-magenta-intense}{HTML}{A03196}
-    \definecolor{ansi-cyan}{HTML}{60C6C8}
-    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
-    \definecolor{ansi-white}{HTML}{C5C1B4}
-    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
-
-    % commands and environments needed by pandoc snippets
-    % extracted from the output of `pandoc -s`
-    \providecommand{\tightlist}{%
-      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-    % Add ',fontsize=\small' for more characters per line
-    \newenvironment{Shaded}{}{}
-    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
-    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
-    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
-    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
-    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
-    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
-    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
-    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
-    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
-    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
-    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
-    \newcommand{\RegionMarkerTok}[1]{{#1}}
-    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
-    \newcommand{\NormalTok}[1]{{#1}}
-    
-    % Additional commands for more recent versions of Pandoc
-    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
-    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
-    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
-    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
-    \newcommand{\ImportTok}[1]{{#1}}
-    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
-    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
-    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
-    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
-    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
-    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
-    \newcommand{\BuiltInTok}[1]{{#1}}
-    \newcommand{\ExtensionTok}[1]{{#1}}
-    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
-    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
-    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
-    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
-    
-    
-    % Define a nice break command that doesn't care if a line doesn't already
-    % exist.
-    \def\br{\hspace*{\fill} \\* }
-    % Math Jax compatability definitions
-    \def\gt{>}
-    \def\lt{<}
-    % Document parameters
-    
-    
-    
-
-    % Pygments definitions
-    
-\makeatletter
-\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
-    \let\PY@ul=\relax \let\PY@tc=\relax%
-    \let\PY@bc=\relax \let\PY@ff=\relax}
-\def\PY@tok#1{\csname PY@tok@#1\endcsname}
-\def\PY@toks#1+{\ifx\relax#1\empty\else%
-    \PY@tok{#1}\expandafter\PY@toks\fi}
-\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
-    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
-\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
-
-\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
-\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
-\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
-\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
-\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
-\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
-\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
-\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
-\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
-\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
-\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
-\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
-\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
-\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
-\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
-\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
-\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
-\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
-\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
-\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
-\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
-\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
-\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
-\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
-\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
-\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
-\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
-\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
-\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
-\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
-\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
-\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
-\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
-\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
-\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
-\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
-\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
-
-\def\PYZbs{\char`\\}
-\def\PYZus{\char`\_}
-\def\PYZob{\char`\{}
-\def\PYZcb{\char`\}}
-\def\PYZca{\char`\^}
-\def\PYZam{\char`\&}
-\def\PYZlt{\char`\<}
-\def\PYZgt{\char`\>}
-\def\PYZsh{\char`\#}
-\def\PYZpc{\char`\%}
-\def\PYZdl{\char`\$}
-\def\PYZhy{\char`\-}
-\def\PYZsq{\char`\'}
-\def\PYZdq{\char`\"}
-\def\PYZti{\char`\~}
-% for compatibility with earlier versions
-\def\PYZat{@}
-\def\PYZlb{[}
-\def\PYZrb{]}
-\makeatother
-
-
-    % Exact colors from NB
-    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
-    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
-
-
-
-    
-    % Prevent overflowing lines due to hard-to-break entities
-    \sloppy 
-    % Setup hyperref package
-    \hypersetup{
-      breaklinks=true,  % so long urls are correctly broken across lines
-      colorlinks=true,
-      urlcolor=urlcolor,
-      linkcolor=linkcolor,
-      citecolor=citecolor,
-      }
-    % Slightly bigger margins than the latex defaults
-    
-    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-    
-    
 \author{Борис Цейтлин, Михаил Макаров}
 \title{game theory in data analysis project}
-
-
+\makeatother
 \begin{document}
+
 
 
 	\thispagestyle{empty}    % +1 - это титульный лист
@@ -486,12 +101,172 @@
 
 	\section{Введение}
 	
-  Описание задачи
-  Гипотеза
+  В данной работе мы проанализировали сеть контактов госслужащих РФ и выявили  корреляцию между центральностью госслужащего в сети и его доходами.
+
+  Согласно № 273-ФЗ «О противодействии коррупции» государственные служащие РФ ежегодно подают декларации о доходах, имуществе и обязательствах имущественного характера. В декларациях указываются счета в банках, ценные бумаги, недвижимости, транспортные средства, доходы родственников и место работы.
 
   \subsection{Исходные данные}
 
-  \subsection{Преобразование к сети}
+  Данные были получены с помощью проекта \href{https://declarator.org}{Декларатор}, который собирает декларации государственных служащих, приводит их к машиночитаемому виду и предоставляет к ним доступ.
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={0.8\linewidth}{0.9\paperheight}}{img/declarator_example.png}
+    \caption{Декларатор.орг}
+  \end{figure}
+
+  Проект предоставляет данные в формате JSON. 
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={0.4\linewidth}{0.5\paperheight}}{img/json_example.png}
+    \caption{Пример данных в декларации}
+  \end{figure}
+
+  Всего дамп данных содержал \textbf{90864} деклараций, с 1998 года по 2017.
+  Он включает в себя \textbf{51855} уникальных персоналий, \textbf{2104} учреждения.
+
+  Мы выделили в декларациях интересующие нас параметры:
+  \begin{itemize}
+  \setlength{\itemindent}{.5in}
+    \item person\_id, person\_name - идентификаторы человека
+    \item year - год декларации
+    \item office\_id, office\_name - идентификаторы учреждения
+    \item income - доход в рублях
+  \end{itemize}
+
+  При этом доходы родственников мы добавляли к доходам государственных служащих.
+
+  Мы обнаружили слишком много пропусков в данных о банковских вкладах, ценных бумагах, недвижимости и транспортных средствах. Эти данные остались вне области данного исследования.
+
+  \pagebreak
+
+  Таким образом, мы перешли к табличному виду данных следующего формата:
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={0.8\linewidth}{0.5\paperheight}}{img/data_table.png}
+    \caption{Табличный вид данных}
+  \end{figure}
+
+  \section{Исследование данных}
+
+  \subsection{Метаданные}
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={0.8\linewidth}{0.5\paperheight}}{img/total_dec.png}
+    \caption{Количество деклараций по годам}
+  \end{figure}
+
+  Мы выделили, что основная часть деклараций приходится на года с 2009 по 2016. Декларации от других лет сильно отличаются от деклараций в этот период. Мы решили использовать только декларации за этот период для дальнейшего анализа.
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.5\paperheight}}{img/dec_by_office.png}
+    \caption{Количество деклараций по учреждениям}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.5\paperheight}}{img/unique_by_office.png}
+    \caption{Количество персон по учреждениям}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.7\paperheight}}{img/unique_by_year_by_office.png}
+    \caption{Относительное количество персон в учреждениях по годам}
+  \end{figure}
+
+  Данная диаграмма показывает как менялось количество чиновников в разных учреждениях относительно общего числа.
+
+  \subsection{Данные о доходах по годам и учреждениям}
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.7\paperheight}}{img/income_by_years.png}
+    \caption{Суммарный заработок чиновников по годам}
+  \end{figure}
+
+  Примечательно, что суммарные доходы госслужащих сильно менялись от года к году. На данном графике явно выделяется экономический кризис 2011 - 2012 годов, который называют "второй волной" кризиса 2008 года.
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.7\paperheight}}{img/income_by_years_med.png}
+    \caption{Медианный заработок чиновников по годам}
+  \end{figure}
+
+  Медианный доход однако менялся не сильно.
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.7\paperheight}}{img/office_incomes.png}
+    \caption{Общий заработок по учреждениям}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.7\paperheight}}{img/big_office_incomes.png}
+    \caption{Общий заработок по учреждениям, только большие учреждения}
+  \end{figure}
+
+  Рассматривая распределение заработков госслужащих в больших, по количеству работников, учреждениях и в целом, видно, что госслужащие на высоких должностях, уровня губернатора и выше, имеют доходы сопоставимые с доходами всех работников больших учреждений.
+
+  А так менялись медианные доходы в крупнейших учреждениях с течением времени:
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.7\paperheight}}{img/income_by_year_by_office_med.png}
+    \caption{Медианные доходы по учреждениям}
+  \end{figure}
+  
+  \subsection{Распределение доходов}
+
+  Мы рассмотрели распределение суммарных доходов госслужащих.
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.7\paperheight}}{img/income_boxplot_1.png}
+    \caption{Boxplot доходов госслужащих}
+  \end{figure}
+
+  При взгляде на эту диаграмму становится очевидно, что среди доходов чиновников существует огромное неравенство. Мы решили разбить доходы чиновников по перцентилям.
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.7\paperheight}}{img/perc_inc_log.png}
+    \caption{Суммарные доходы чиновников по перцентилям, логарифмическая шкала}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={1\linewidth}{0.7\paperheight}}{img/perc_am_log.png}
+    \caption{Количество чиновников по перцентилям}
+  \end{figure}
+
+  Обратная зависимость количества людей и их доходов очевидна.
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={0.8\linewidth}{0.5\paperheight}}{img/boxplots_perc.png}
+    \caption{Распределение доходов по перцентилям, млн. руб}
+
+  \end{figure}
+
+  Мы так же проверили, какая зависимость есть между количеством лет на госслужбе и доходом. Для этого пришлось удалить выбросы, оставив только доходы в пределах 3 стандартных отклонений.
+
+  \begin{figure}[H]
+    \centering
+    \adjustimage{max size={0.8\linewidth}{0.5\paperheight}}{img/income_vs_years.png}
+    \caption{Годы на госслужбе и доходы}
+  \end{figure}
+
+  \subsection{Выводы}
+
+  В результате анализа мы пришли к выводу, что данные содержат множество выбросов и перед дальнейшим анализом необходимо их очистить. Мы решили оставить только лиц с доходом в пределах $3 \sigma$  отклонений, использовать декларации только с \textbf{2009} по \textbf{2016} годы.
+
+  \section{Создание сети}
 
   \section{Исследование сети}
 
@@ -504,10 +279,6 @@
   \section{Центральности в сети и корреляции с доходом}
 
   \subsection{Классические индексы центральности}
-
-  \subsection{LRIC}
-
-  \subsection{SLRIC}
 
   \section{Заключение}
 
